@@ -34,7 +34,12 @@ bool AppView_in_getSolvingRequest() {
 	char input = 0;
 	char buff[80] = { 0 };
 
+#if _MSC_VER
 	scanf_s("%s", buff, sizeof(buff));
+#else
+	scanf("%s", buff);
+#endif
+
 	input = buff[0];
 #else
 	input = (char)_getch();
