@@ -3,7 +3,7 @@
 
 #define EPSILON 1.0E-6
 
-#define FloatAbs(f0) (float)((long)f0 & 0x7fffffff)
-#define FloatIsZero(f0) (FloatAbs(f0) < EPSILON)
+#define F32Abs(f0) (float)((long)f0 & 0x7fffffff)
+#define F32IsZero(f0) (F32Abs(f0) < EPSILON)
 
 #endif

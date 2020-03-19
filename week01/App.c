@@ -15,7 +15,7 @@ int App_Start() {
 		AppView_in_getCoefficient(&c0, &c1);
 		AppView_out_showLinearEquation(c0, c1);
 
-		if (FloatIsZero(c0)) {
+		if (F32IsZero(c0)) {
 			AppView_out_msg_error_firstOrderTermCoefficientIsZero();
 		} else {
 			root = App_SolveEquation();
