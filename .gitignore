@@ -1,3 +1,8 @@
 Debug
 Release
 .vs
+
+*.aux
+*.log
+*.synctex.*
+*.toc
