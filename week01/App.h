@@ -1,4 +1,4 @@
-#ifndef __APP_H
+﻿#ifndef __APP_H
 #define __APP_H
 
 #define __PREFER_STANDARD 1

@@ -1,4 +1,4 @@
-#include "AppView.h"
+ï»¿#include "AppView.h"
 
 #include <stdio.h>
 
@@ -7,28 +7,28 @@
 #endif
 
 void    AppView_out_msg_startSolvingLinearEquation(void) {
-	puts("<<< ÀÏÂ÷¹æÁ¤½Ä Ç®ÀÌ¸¦ ½ÃÀÛÇÕ´Ï´Ù >>>\n");
+	puts("<<< ì¼ì°¨ë°©ì •ì‹ í’€ì´ë¥¼ ì‹œì‘í•©ë‹ˆë‹¤ >>>\n");
 }
 
 void    AppView_out_msg_endSolvingLinearEquation(void) {
-	puts("\n<<< ÀÏÂ÷¹æÁ¤½Ä Ç®ÀÌ¸¦ Á¾·áÇÕ´Ï´Ù >>>");
+	puts("\n<<< ì¼ì°¨ë°©ì •ì‹ í’€ì´ë¥¼ ì¢…ë£Œí•©ë‹ˆë‹¤ >>>");
 }
 
 void    AppView_out_showLinearEquation(float c0, float c1) {
-	printf("> ÁÖ¾îÁø ¹æÁ¤½Ä: (%.1f)x + (%.1f) = 0\n", c0, c1);
+	printf("> ì£¼ì–´ì§„ ë°©ì •ì‹: (%.1f)x + (%.1f) = 0\n", c0, c1);
 }
 
 void    AppView_out_showRoot(float root) {
-	printf("> ¹æÁ¤½ÄÀÇ ÇØ´Â ´ÙÀ½°ú °°½À´Ï´Ù:\n"
+	printf("> ë°©ì •ì‹ì˜ í•´ëŠ” ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤:\n"
 		"x=%.1f\n\n", root);
 }
 
 void    AppView_out_msg_error_firstOrderTermCoefficientIsZero(void) {
-	puts("[¿À·ù] 1 Â÷Ç×ÀÇ °è¼ö°¡ 0 ÀÌ¾î¼­, ¹æÁ¤½ÄÀ» Ç® ¼ö ¾ø½À´Ï´Ù.\n");
+	puts("[ì˜¤ë¥˜] 1 ì°¨í•­ì˜ ê³„ìˆ˜ê°€ 0 ì´ì–´ì„œ, ë°©ì •ì‹ì„ í’€ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.\n");
 }
 
 bool AppView_in_getSolvingRequest(void) {
-	printf("? ¹æÁ¤½ÄÀ» Ç®·Á¸é 'y', Ç®ÀÌ¸¦ Á¾·áÇÏ·Á¸é ´Ù¸¥ ¾Æ¹« Å°³ª Ä¡½Ã¿À:");
+	printf("? ë°©ì •ì‹ì„ í’€ë ¤ë©´ 'y', í’€ì´ë¥¼ ì¢…ë£Œí•˜ë ¤ë©´ ë‹¤ë¥¸ ì•„ë¬´ í‚¤ë‚˜ ì¹˜ì‹œì˜¤:");
 
 #if __PREFER_STANDARD
 	char input = 0;
@@ -51,13 +51,13 @@ bool AppView_in_getSolvingRequest(void) {
 
 void    AppView_in_getCoefficient(float* c0, float* c1) {
 	if (c0 == NULL || c1 == NULL) {
-		puts("[¿À·ù] Àß¸øµÈ ÆÄ¶ó¸ŞÅÍ°¡ Àü´ŞµÇ¾ú½À´Ï´Ù.");
+		puts("[ì˜¤ë¥˜] ì˜ëª»ëœ íŒŒë¼ë©”í„°ê°€ ì „ë‹¬ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		return;
 	}
 
-	printf("? 1 Â÷Ç×ÀÇ °è¼ö¸¦ ÀÔ·ÂÇÏ½Ã¿À: ");
+	printf("? 1 ì°¨í•­ì˜ ê³„ìˆ˜ë¥¼ ì…ë ¥í•˜ì‹œì˜¤: ");
 	scanf_s("%f", c0);
 
-	printf("? »ó¼öÇ×ÀÇ °è¼ö¸¦ ÀÔ·ÂÇÏ½Ã¿À: ");
+	printf("? ìƒìˆ˜í•­ì˜ ê³„ìˆ˜ë¥¼ ì…ë ¥í•˜ì‹œì˜¤: ");
 	scanf_s("%f", c1);
 }

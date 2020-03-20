@@ -1,4 +1,4 @@
-#ifndef __MACROS_H
+﻿#ifndef __MACROS_H
 #define __MACROS_H
 
 #define EPSILON 1.0E-6

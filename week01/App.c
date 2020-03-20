@@ -1,4 +1,4 @@
-#include "App.h"
+﻿#include "App.h"
 
 static float c0 = 0.0f, c1 = 0.0f, root = 0.0f;
 

@@ -1,4 +1,4 @@
-#ifndef __APPVIEW_H
+﻿#ifndef __APPVIEW_H
 #define __APPVIEW_H
 
 #include "App.h"
