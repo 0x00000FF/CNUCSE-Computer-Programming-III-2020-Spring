@@ -7,6 +7,6 @@
 
 #include "App.h"
 
-int main() {
+int main(void) {
     return App_Start();
 }

@@ -27,7 +27,7 @@ void    AppView_out_msg_error_firstOrderTermCoefficientIsZero(void) {
 	puts("[오류] 1 차항의 계수가 0 이어서, 방정식을 풀 수 없습니다.\n");
 }
 
-bool AppView_in_getSolvingRequest() {
+bool AppView_in_getSolvingRequest(void) {
 	printf("? 방정식을 풀려면 'y', 풀이를 종료하려면 다른 아무 키나 치시오:");
 
 #if __PREFER_STANDARD

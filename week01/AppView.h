@@ -10,7 +10,7 @@ void    AppView_out_showLinearEquation(float c0, float c1);
 void    AppView_out_showRoot(float root);
 void    AppView_out_msg_error_firstOrderTermCoefficientIsZero(void);
 
-bool    AppView_in_getSolvingRequest();
+bool    AppView_in_getSolvingRequest(void);
 void    AppView_in_getCoefficient(float* c0, float* c1);
 
 #endif

@@ -6,6 +6,6 @@
 #include "Macros.h"
 #include "AppView.h"
 
-int App_Start();
+int App_Start(void);
 
 #endif

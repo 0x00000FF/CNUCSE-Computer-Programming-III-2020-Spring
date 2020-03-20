@@ -2,11 +2,11 @@
 
 static float c0 = 0.0f, c1 = 0.0f, root = 0.0f;
 
-float App_SolveEquation() {
+float App_SolveEquation(void) {
 	return (-c1) / c0;
 }
 
-int App_Start() {
+int App_Start(void) {
 	bool solvingIsRequested = false;
 
 	AppView_out_msg_startSolvingLinearEquation();
