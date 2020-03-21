@@ -4,10 +4,12 @@
     <ClCompile Include="Main.c" />
     <ClCompile Include="App.c" />
     <ClCompile Include="AppView.c" />
+    <ClCompile Include="Calculator.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
     <ClInclude Include="AppView.h" />
     <ClInclude Include="Macros.h" />
+    <ClInclude Include="Calculator.h" />
   </ItemGroup>
 </Project>

@@ -1,12 +1,8 @@
 ﻿#include "App.h"
-
-static float c0 = 0.0f, c1 = 0.0f, root = 0.0f;
-
-float App_SolveEquation(void) {
-	return (-c1) / c0;
-}
+#include "Calculator.h"
 
 int App_Start(void) {
+	float c0 = 0.0f, c1 = 0.0f, root = 0.0f;
 	bool solvingIsRequested = false;
 
 	AppView_out_msg_startSolvingLinearEquation();
@@ -18,7 +14,7 @@ int App_Start(void) {
 		if (F32IsZero(c0)) {
 			AppView_out_msg_error_firstOrderTermCoefficientIsZero();
 		} else {
-			root = App_SolveEquation();
+			root = Calculator_SolveEquation(c0, c1);
 			AppView_out_showRoot(root);
 		}
 	}

@@ -140,11 +140,13 @@
   <ItemGroup>
     <ClCompile Include="App.c" />
     <ClCompile Include="AppView.c" />
+    <ClCompile Include="Calculator.c" />
     <ClCompile Include="Main.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.h" />
     <ClInclude Include="AppView.h" />
+    <ClInclude Include="Calculator.h" />
     <ClInclude Include="Macros.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
