@@ -30,8 +30,9 @@ void    AppView_out_msg_error_firstOrderTermCoefficientIsZero(void) {
 bool AppView_in_getSolvingRequest(void) {
 	printf("? 방정식을 풀려면 'y', 풀이를 종료하려면 다른 아무 키나 치시오:");
 
-#if __PREFER_STANDARD
 	char input = 0;
+
+#if __PREFER_STANDARD
 	char buff[80] = { 0 };
 
 #if _MSC_VER
@@ -43,7 +44,7 @@ bool AppView_in_getSolvingRequest(void) {
 	input = buff[0];
 #else
 	input = (char)_getch();
-	puts();
+	puts("");
 #endif
 
 	return (input == 'y' || input == 'Y');

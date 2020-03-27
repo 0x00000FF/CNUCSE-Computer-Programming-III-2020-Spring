@@ -45,7 +45,7 @@
 
     \paragraph{\large\texttt{AppView\_out\_msg\_endSolvingLinearEquation(void)} \tiny AppView.h, Ln 8}
 
-    \subparagraph{\normalfont\texttt{<<< 일차방정식 풀이를 종료합니다 >>>} 라는 메세지를 출력한다. \texttt{App} 모듈 시작 시 호출된다.}
+    \subparagraph{\normalfont\texttt{<<< 일차방정식 풀이를 종료합니다 >>>} 라는 메세지를 출력한다. \texttt{App} 모듈 종료 시 호출된다.}
 
     \paragraph{\large\texttt{AppView\_out\_showLinearEquation(float c0, float c1)} \tiny AppView.h, Ln 9}
     
@@ -73,7 +73,8 @@
 
     \paragraph{MACRO \large\texttt{F32Abs(f0)} \tiny Macros.h, Ln 6}
 
-    \subparagraph{\normalfont인자로 전달된 32비트 부동소수점 값의 절댓값을 산출한다. IEEE-754에 정의된 단정밀도 부동소숫점의 정의에 따라, MSB의 값을 Bitwise-AND를 통하여 0으로 만든다. 이때 \texttt{f0}와 Bitwise-AND 되는 operand는 \texttt{0x7fffffff}이다.}
+    \subparagraph{Extended to\: \texttt{f0 \& 0x7fffffff}\\
+                  \normalfont인자로 전달된 32비트 부동소수점 값의 절댓값을 산출한다. IEEE-754에 정의된 단정밀도 부동소숫점의 정의에 따라, MSB의 값을 Bitwise-AND를 통하여 0으로 만든다. 이때 \texttt{f0}와 Bitwise-AND 되는 operand는 \texttt{0x7fffffff}이다.}
 
     \paragraph{MACRO \large\texttt{F32IsZero(f0)} \tiny Macros.h, Ln 7}
 
@@ -88,6 +89,11 @@
     \section{프로그램의 장단점 및 특이점 분석}
     
     \subsection{\texttt{AppView\_in\_getSolvingRequest} 에서의 입력 처리}
+
+    \subparagraph{\normalfont제출된 소스코드상에서 해당 함수는 1) \texttt{scanf}를 이용한 입력과 2) \texttt{_getch}를 이용한 두가지 동작을 제시한다. 각 동작의 실행 여부는 \texttt{App.h} 에 정의된 매크로인 \texttt{__PREFER_STANDARD}의 값에 따라 컴파일 타임에 결정된다.}
+
+    \subparagraph{\normalfont전자의 경우 버퍼로 사용할 \texttt{char} 배열을 선언하고 }
+
 
     \subsection{\texttt{AppView\_in\_getCoefficient} 에서의 사이드이펙트}
 
