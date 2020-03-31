@@ -17,11 +17,11 @@ typedef struct {
 	QuadSolution_t solution;
 } QuadEquationProblem_t;
 
-void  QuadEquationProblem_setEquation(QuadEquationProblem_t* _this, QuadEquation_t problem);
+void  QuadEquationProblem_setEquation(QuadEquationProblem_t* _this, QuadEquation_t equation);
 bool  QuadEquationProblem_secondOrderTermCofficientIsZero(QuadEquationProblem_t* _this);
 bool  QuadEquationProblem_determinantIsNegative(QuadEquationProblem_t* _this);
 float QuadEquationProblem_getDeterminant(QuadEquationProblem_t* _this);
-void QuadEquationProblem_solve(QuadEquationProblem_t* _this);
+void  QuadEquationProblem_solve(QuadEquationProblem_t* _this);
 
 
 #endif

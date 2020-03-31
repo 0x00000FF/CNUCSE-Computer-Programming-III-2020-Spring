@@ -68,18 +68,18 @@ bool AppView_in_getSolvingRequest(void) {
 	return (input == 'y' || input == 'Y');
 }
 
-void    AppView_in_getCoefficient(QuadEquationProblem_t* problem) {
-	if (problem == NULL) {
+void    AppView_in_getCoefficient(QuadEquation_t* equation) {
+	if (equation == NULL) {
 		puts("[오류] 잘못된 파라메터가 전달되었습니다.");
 		return;
 	}
 
 	printf("? 2 차항의 계수를 입력하시오: ");
-	scanf_s("%f", &problem->equation.c0);
+	scanf_s("%f", &equation->c0);
 
 	printf("? 1 차항의 계수를 입력하시오: ");
-	scanf_s("%f", &problem->equation.c1);
+	scanf_s("%f", &equation->c1);
 
 	printf("? 상수항의 계수를 입력하시오: ");
-	scanf_s("%f", &problem->equation.c2);
+	scanf_s("%f", &equation->c2);
 }

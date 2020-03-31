@@ -14,6 +14,6 @@ void    AppView_out_msg_error_secondOrderTermCoefficientIsZero(void);
 void    AppView_out_msg_error_determinantIsNegative(QuadEquationProblem_t problem);
 
 bool    AppView_in_getSolvingRequest(void);
-void    AppView_in_getCoefficient(QuadEquationProblem_t* problem);
+void    AppView_in_getCoefficient(QuadEquation_t* equation);
 
 #endif

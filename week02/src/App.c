@@ -8,7 +8,10 @@ int App_Start(void) {
 	AppView_out_msg_startSolvingQuadEquation();
 
 	while (solvingIsRequested = AppView_in_getSolvingRequest()) {
-		AppView_in_getCoefficient(&problem);
+		QuadEquation_t equation;
+		AppView_in_getCoefficient(&equation);
+
+		QuadEquationProblem_setEquation(&problem, equation);
 		AppView_out_showQuadEquation(problem);
 
 		if (F32IsZero(problem.equation.c0)) {
