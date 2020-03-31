@@ -43,7 +43,7 @@ bool AppView_in_getSolvingRequest(void) {
 
 	input = buff[0];
 #else
-	input = (char)_getch();
+	input = (char)_getche();
 	puts("");
 #endif
 
