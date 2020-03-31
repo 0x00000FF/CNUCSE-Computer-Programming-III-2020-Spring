@@ -12,7 +12,10 @@ bool  QuadEquationProblem_secondOrderTermCofficientIsZero(QuadEquationProblem_t*
 }
 
 bool  QuadEquationProblem_determinantIsNegative(QuadEquationProblem_t* _this) {
-    return QuadEquationProblem_getDeterminant(_this) < 0;
+    float determinant = QuadEquationProblem_getDeterminant(_this);
+    
+    // float을 0과 직접 비교하는것은 위험
+    return !F32IsZero(determinant) && determinant < 0;
 }
 
 float QuadEquationProblem_getDeterminant(QuadEquationProblem_t* _this) {
