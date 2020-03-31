@@ -1,6 +1,7 @@
 Debug
 Release
 .vs
+submit
 
 *.aux
 *.log
