@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -139,11 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Includes\app\model\magic_square.h" />
+    <ClInclude Include="Includes\lib\string.h" />
     <ClInclude Include="Includes\mvc.h" />
     <ClInclude Include="Includes\mvc\oop.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\app\mvc_app.c" />
+    <ClCompile Include="Sources\app\models\magic_square.c" />
+    <ClCompile Include="Sources\app\app_controller.c" />
     <ClCompile Include="Sources\main.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
