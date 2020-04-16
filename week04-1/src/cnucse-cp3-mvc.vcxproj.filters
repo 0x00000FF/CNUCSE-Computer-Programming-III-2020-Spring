@@ -2,12 +2,11 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Sources\main.c" />
-    <ClCompile Include="Sources\app\models\magic_square.c">
-      <Filter>Application\Models</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\app\app_controller.c">
       <Filter>Application</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\app\app_view.c" />
+    <ClCompile Include="Sources\app\models\quad_equation.c" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Includes">
@@ -33,9 +32,8 @@
     <ClInclude Include="Includes\mvc\oop.h">
       <Filter>Includes</Filter>
     </ClInclude>
-    <ClInclude Include="Includes\lib\string.h" />
-    <ClInclude Include="Includes\app\model\magic_square.h">
-      <Filter>Includes</Filter>
-    </ClInclude>
+    <ClInclude Include="Includes\app\app_view.h" />
+    <ClInclude Include="Includes\app\macro.h" />
+    <ClInclude Include="Includes\app\models\quad_equation.h" />
   </ItemGroup>
 </Project>

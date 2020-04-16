@@ -139,14 +139,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Includes\app\model\magic_square.h" />
-    <ClInclude Include="Includes\lib\string.h" />
+    <ClInclude Include="Includes\app\app_view.h" />
+    <ClInclude Include="Includes\app\macro.h" />
+    <ClInclude Include="Includes\app\models\quad_equation.h" />
     <ClInclude Include="Includes\mvc.h" />
     <ClInclude Include="Includes\mvc\oop.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\app\models\magic_square.c" />
     <ClCompile Include="Sources\app\app_controller.c" />
+    <ClCompile Include="Sources\app\app_view.c" />
+    <ClCompile Include="Sources\app\models\quad_equation.c" />
     <ClCompile Include="Sources\main.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

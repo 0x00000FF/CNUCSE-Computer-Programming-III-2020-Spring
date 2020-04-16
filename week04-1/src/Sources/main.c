@@ -7,7 +7,7 @@ int main(int argc, char* argv[]) {
 		SetConsoleTitle(CONFIG_CONSOLE_TITLE);
 	}
 #endif
-
+	
 	int _app_ret_val = AppController(argc, argv);
 
 	return _app_ret_val;
