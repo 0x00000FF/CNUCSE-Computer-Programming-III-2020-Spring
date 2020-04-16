@@ -2,10 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Sources\main.c" />
+    <ClCompile Include="Sources\app\app_controller.c">
+      <Filter>Application</Filter>
+    </ClCompile>
     <ClCompile Include="Sources\app\models\magic_square.c">
       <Filter>Application\Models</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\app\app_controller.c">
+    <ClCompile Include="Sources\app\models\app_view.c">
       <Filter>Application</Filter>
     </ClCompile>
   </ItemGroup>
@@ -15,12 +18,6 @@
     </Filter>
     <Filter Include="Application">
       <UniqueIdentifier>{37b956ad-e319-43c6-971b-9d2380cf963c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Application\Controllers">
-      <UniqueIdentifier>{de4d8bc7-cb4f-4d59-9fef-ed7d4cbc63ef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Application\Views">
-      <UniqueIdentifier>{474da939-7f3a-4a5f-b272-8e66f5542d22}</UniqueIdentifier>
     </Filter>
     <Filter Include="Application\Models">
       <UniqueIdentifier>{02aba534-08f3-4260-b63e-e05b5bdec25b}</UniqueIdentifier>
@@ -33,8 +30,10 @@
     <ClInclude Include="Includes\mvc\oop.h">
       <Filter>Includes</Filter>
     </ClInclude>
-    <ClInclude Include="Includes\lib\string.h" />
     <ClInclude Include="Includes\app\model\magic_square.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\app\app_view.h">
       <Filter>Includes</Filter>
     </ClInclude>
   </ItemGroup>

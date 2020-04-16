@@ -14,7 +14,7 @@
 #define  IS_MSVC                      _MSC_VER
 
 #define  CONFIG_ENABLE_CONSOLE_TITLE  1
-#define  CONFIG_CONSOLE_TITLE         L"App_MVCExample"
+#define  CONFIG_CONSOLE_TITLE         L"컴프3: 마방진 MVC App"
 
 #endif
 
