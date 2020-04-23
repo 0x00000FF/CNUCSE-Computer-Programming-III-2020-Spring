@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Sources\main.c" />
+    <ClCompile Include="Sources\app\app_controller.c">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\app\models\magic_square.c">
+      <Filter>Application\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\app\models\app_view.c">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\app\models\timer.c">
+      <Filter>Application\Models</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Includes">
+      <UniqueIdentifier>{dc24cfca-27b2-4660-9b67-9765047cc8fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application">
+      <UniqueIdentifier>{37b956ad-e319-43c6-971b-9d2380cf963c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Models">
+      <UniqueIdentifier>{02aba534-08f3-4260-b63e-e05b5bdec25b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Includes\mvc.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\mvc\oop.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\app\model\magic_square.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\app\app_view.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\app\model\timer.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
