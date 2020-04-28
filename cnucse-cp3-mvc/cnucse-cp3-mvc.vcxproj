@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Includes\app\app_controller.h" />
     <ClInclude Include="Includes\mvc.h" />
     <ClInclude Include="Includes\mvc\oop.h" />
   </ItemGroup>

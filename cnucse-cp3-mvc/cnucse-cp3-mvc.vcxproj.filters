@@ -30,5 +30,8 @@
     <ClInclude Include="Includes\mvc\oop.h">
       <Filter>Includes</Filter>
     </ClInclude>
+    <ClInclude Include="Includes\app\app_controller.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
