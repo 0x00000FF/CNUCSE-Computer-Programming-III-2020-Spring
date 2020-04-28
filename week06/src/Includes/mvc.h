@@ -9,17 +9,18 @@
 
 #include <Windows.h>
 
+#undef   min                          
+#undef   max                          // min, max macro of Windows.h undef
 #undef   DELETE                       // mvc_oop DELETE macro redefinition
 
 #define  IS_MSVC                      _MSC_VER
 
 #define  CONFIG_ENABLE_CONSOLE_TITLE  1
-#define  CONFIG_CONSOLE_TITLE         L"App_MVCExample"
+#define  CONFIG_CONSOLE_TITLE         L"6林瞒: 己利 贸府 App"
 
 #endif
 
 #include <mvc/oop.h>
-
-int AppController(int argc, char* argv[]);
+#include <app/app_controller.h>
 
 #endif

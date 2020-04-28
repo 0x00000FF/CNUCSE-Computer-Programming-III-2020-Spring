@@ -5,6 +5,12 @@
     <ClCompile Include="Sources\app\app_controller.c">
       <Filter>Application</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\app\models\lecture_class.c">
+      <Filter>Application\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\app\views\appview.c">
+      <Filter>Application\Views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Includes">
@@ -31,6 +37,12 @@
       <Filter>Includes</Filter>
     </ClInclude>
     <ClInclude Include="Includes\app\app_controller.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\app\model\lecture_class.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\app\view\appview.h">
       <Filter>Includes</Filter>
     </ClInclude>
   </ItemGroup>

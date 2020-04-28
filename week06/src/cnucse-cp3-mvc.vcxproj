@@ -140,11 +140,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Includes\app\app_controller.h" />
+    <ClInclude Include="Includes\app\model\lecture_class.h" />
+    <ClInclude Include="Includes\app\view\appview.h" />
     <ClInclude Include="Includes\mvc.h" />
     <ClInclude Include="Includes\mvc\oop.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\app\app_controller.c" />
+    <ClCompile Include="Sources\app\models\lecture_class.c" />
+    <ClCompile Include="Sources\app\views\appview.c" />
     <ClCompile Include="Sources\main.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
