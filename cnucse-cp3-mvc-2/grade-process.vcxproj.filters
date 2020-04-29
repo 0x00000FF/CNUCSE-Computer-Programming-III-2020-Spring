@@ -13,6 +13,12 @@
     <Filter Include="Includes\model">
       <UniqueIdentifier>{ea631eb0-2466-4220-8d93-b68e16c70807}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Application\model">
+      <UniqueIdentifier>{d8a0740b-b67d-439c-96be-0181f0d2e7d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Includes\app">
+      <UniqueIdentifier>{fe1f031b-2dce-4dcb-8ce7-acec702c3f00}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.c" />
@@ -22,10 +28,28 @@
     <ClCompile Include="Sources\application\app_controller_lib.c">
       <Filter>Application</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\application\model\student.c">
+      <Filter>Application\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\application\model\vector_student.c">
+      <Filter>Application\model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\mvc\app_controller.h">
       <Filter>Includes\mvc</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\model\student.h">
+      <Filter>Includes\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\app\common.h">
+      <Filter>Includes\app</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\mvc\vector.h">
+      <Filter>Includes\mvc</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\app\vector_student.h">
+      <Filter>Includes\model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

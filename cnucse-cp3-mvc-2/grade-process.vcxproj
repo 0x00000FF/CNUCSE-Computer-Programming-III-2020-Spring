@@ -21,10 +21,16 @@
   <ItemGroup>
     <ClCompile Include="Sources\application\app_controller.c" />
     <ClCompile Include="Sources\application\app_controller_lib.c" />
+    <ClCompile Include="Sources\application\model\student.c" />
+    <ClCompile Include="Sources\application\model\vector_student.c" />
     <ClCompile Include="Sources\main.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Includes\app\common.h" />
+    <ClInclude Include="Includes\app\vector_student.h" />
+    <ClInclude Include="Includes\model\student.h" />
     <ClInclude Include="Includes\mvc\app_controller.h" />
+    <ClInclude Include="Includes\mvc\vector.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
