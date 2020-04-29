@@ -1,15 +1,4 @@
-﻿////////////////////////////////////////////////////////////////////////////
-//
-//    [제 7주차] 성적처리 :: 진입점
-//
-//    최초 작성일 2020년 04월 29일
-//    작성자     201704150 허강준
-//
-//    클래스 app_controller 관련 구현을 기술합니다.
-//
-////////////////////////////////////////////////////////////////////////////
-
-#include <mvc/app_controller.h>    // app_controller
+﻿#include <mvc/app_controller.h>    // app_controller
 
 // app_controller 생성자
 app_controller* app_controller_create(int argc, char* argv)
