@@ -2,8 +2,6 @@
 
 #include <stdint.h>
 
-#include <app/common.h>
-
 typedef uint64_t student_id;
 
 typedef struct {
