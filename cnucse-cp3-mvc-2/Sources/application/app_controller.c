@@ -1,7 +1,7 @@
 ﻿#include <mvc/app_controller.h>    // app_controller
 
 // app_controller 생성자
-app_controller* app_controller_create(int argc, char* argv)
+app_controller* app_controller_create(int argc, char** argv)
 {
 	app_controller* controller = (app_controller*)malloc(sizeof(app_controller));
 
