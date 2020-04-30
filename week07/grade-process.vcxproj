@@ -26,7 +26,6 @@
     <ClCompile Include="Sources\main.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Includes\app\common.h" />
     <ClInclude Include="Includes\app\vector_student.h" />
     <ClInclude Include="Includes\model\student.h" />
     <ClInclude Include="Includes\mvc\app_controller.h" />

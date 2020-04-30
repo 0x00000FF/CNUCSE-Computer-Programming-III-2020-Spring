@@ -42,9 +42,6 @@
     <ClInclude Include="Includes\model\student.h">
       <Filter>Includes\model</Filter>
     </ClInclude>
-    <ClInclude Include="Includes\app\common.h">
-      <Filter>Includes\app</Filter>
-    </ClInclude>
     <ClInclude Include="Includes\mvc\vector.h">
       <Filter>Includes\mvc</Filter>
     </ClInclude>
