@@ -2,10 +2,15 @@
 
 #include <stdlib.h>
 #include <setjmp.h>
+#include <app/vector_student.h>
+
+#define  MAX_STUDENTS   100
 
 typedef struct {
-	int    argc, result;
-	char** argv;
+	int              argc, result;
+	char**           argv;
+
+	VECTOR(student*)* students;
 } app_controller;
 
 
