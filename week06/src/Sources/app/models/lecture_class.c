@@ -119,42 +119,41 @@ METHOD_DEF(LectureClass, void, sort_score) {
 
 }
 
+METHOD_DEF(LectureClass, int, min_rec, int left, int right) {
+	if (left > right) return 100;
+	
+	int min_sofar = METHOD(LectureClass, self, min_rec, left + 1, right);
+	return self->scores[left] < min_sofar ? self->scores[left] : min_sofar;
+}
+
 METHOD_DEF(LectureClass, int, min) {
 	if (METHOD(LectureClass, self, empty)) return -1;
+	return METHOD(LectureClass, self, min_rec, 0, self->last);
+}
 
-	int min = self->scores[0];
+METHOD_DEF(LectureClass, int, max_rec, int left, int right) {
+	if (left > right) return 0;
 
-	for (int i = 1; i <= self->last; ++i) {
-		if (min > self->scores[i]) min = self->scores[i];
-	}
-
-	return min;
+	int max_sofar = METHOD(LectureClass, self, max_rec, left + 1, right);
+	return self->scores[left] > max_sofar ? self->scores[left] : max_sofar;
 }
 
 METHOD_DEF(LectureClass, int, max) {
 	if (METHOD(LectureClass, self, empty)) return -1;
-
-	int max = self->scores[0];
-
-	for (int i = 1; i <= self->last; ++i) {
-		if (max < self->scores[i]) max = self->scores[i];
-	}
-
-	return max;
+	return METHOD(LectureClass, self, max_rec, 0, self->last);
 }
 
 METHOD_DEF(LectureClass, int*, list) {
 	return self->scores;
 }
 
+METHOD_DEF(LectureClass, int, sum_rec, int left, int right) {
+	if (left > right) return 0;
+	return self->scores[left] + METHOD(LectureClass, self, sum_rec, left+1, right);
+}
+
 METHOD_DEF(LectureClass, int, sum) {
-	int sum = 0;
-
-	for (int i = 0; i <= self->last; ++i) {
-		sum += self->scores[i];
-	}
-
-	return sum;
+	return METHOD(LectureClass, self, sum_rec, 0, self->last);
 }
 
 METHOD_DEF(LectureClass, int, aboveAverage) {

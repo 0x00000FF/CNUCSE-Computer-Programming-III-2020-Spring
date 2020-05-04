@@ -185,14 +185,29 @@
                 \normalfont 데이터 배열 내 최솟값을 가져온다.
             }
 
+            \paragraph{\texttt{LectureClass::min\_rec()}}
+            \paragraph{%
+                \normalfont 데이터 배열 내 최솟값을 가져오는 재귀 알고리즘을 수행한다.
+            }
+
             \paragraph{\texttt{LectureClass::max()}}
             \paragraph{%
                 \normalfont 데이터 배열 내 최댓값을 가져온다.
             }
 
+            \paragraph{\texttt{LectureClass::min\_rec()}}
+            \paragraph{%
+                \normalfont 데이터 배열 내 최댓값을 가져오는 재귀 알고리즘을 수행한다.
+            }
+
             \paragraph{\texttt{LectureClass::sum()}}
             \paragraph{%
                 \normalfont 총 합계를 계산하여 반환한다.
+            }
+
+            \paragraph{\texttt{LectureClass::sum\_rec()}}
+            \paragraph{%
+                \normalfont 총 합계를 계산하는 재귀 알고리즘을 수행한다.
             }
 
             \paragraph{\texttt{LectureClass::aboveAverage()}}
@@ -217,9 +232,9 @@
             }
             
     \chapter{프로그램 장단점/특이점 분석}
-            \section{최대, 최소, 평균 등에 재귀를 사용하지 않은 이유}
+            \section{최대, 최소, 평균 등에 재귀 알고리즘을 사용}
             \paragraph{%
-                \normalfont 해당 값을 계산하기 위한 알고리즘은 선형적으로 처리가 가능하여, 재귀를 사용할 필요가 없다. 또한 재귀는 함수 호출을 동반하여 단순 반복보다 성능적인 면에서 불리하며 또한 가독성을 저해할 여지가 있다. 다만, quicksort와 같은 알고리즘에서는 divide-and-conquer를 설명하기에 적합하여 재귀를 사용함이 옮다.
+                \normalfont 선형 데이터 집합에 대하여 최대, 최소, 평균 알고리즘은 보통 \texttt{for} 문으로 작성하는 것이 일반적이다. 그러나 재귀 알고리즘으로 작성할 경우 조금 다른 방식으로 해석될 수 있는 코드를 작성할 수 있다. \texttt{for}문을 사용할 경우 내부 데이터를 검색하며 조건에 맞을 경우 리턴 값을 변경하는 식이지만, 재귀의 경우 그 스택 프레임 안에서 한정할 때 단순 비교와도 같이 처리되므로, 코드를 좀 더 직관적이고 간결하게 해석할 수 있다는 장점이 있다. 그러나 내부 데이터의 양이 많을 경우 Stack Overflow 등의 오류가 발생할 수 있으므로 대규모 데이터를 다룰 때 주의할 필요가 있다. 
             }   
 
             \section{\texttt{GradeCounter}를 사용하지 않은 이유}
