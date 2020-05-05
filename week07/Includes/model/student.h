@@ -3,7 +3,8 @@
 #include <stdbool.h>
 #define  STUDENT_ID_LENGTH 9
 
-typedef char student_id[STUDENT_ID_LENGTH + 1];
+// 18 for buffered size
+typedef char student_id[STUDENT_ID_LENGTH + 18];
 
 typedef struct {
 	student_id      id;

@@ -3,6 +3,8 @@
 
 FUNC_VECTOR_NEW_IMPL(student)
 
+FUNC_VECTOR_DELETE_IMPL(student)
+
 FUNC_VECTOR_AT_IMPL(student)
 
 FUNC_VECTOR_FRONT_IMPL(student)

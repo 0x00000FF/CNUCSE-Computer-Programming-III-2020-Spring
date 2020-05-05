@@ -34,6 +34,15 @@
     <ClCompile Include="Sources\application\model\vector_student.c">
       <Filter>Application\model</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\application\appview.c">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\application\model\lecture_class.c">
+      <Filter>Application\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\application\model\lecture_view.c">
+      <Filter>Application\model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\mvc\app_controller.h">
@@ -45,7 +54,16 @@
     <ClInclude Include="Includes\mvc\vector.h">
       <Filter>Includes\mvc</Filter>
     </ClInclude>
+    <ClInclude Include="Includes\mvc\appview.h">
+      <Filter>Includes\mvc</Filter>
+    </ClInclude>
     <ClInclude Include="Includes\app\vector_student.h">
+      <Filter>Includes\app</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\model\lecture_class.h">
+      <Filter>Includes\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\model\lecture_view.h">
       <Filter>Includes\model</Filter>
     </ClInclude>
   </ItemGroup>

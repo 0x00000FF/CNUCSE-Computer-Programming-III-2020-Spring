@@ -22,6 +22,14 @@ FUNC_VECTOR_NEW(type) {                                                         
     return new_vector;                                                                \
 }
 
+#define VECTOR_DELETE(type)             VECTOR_FUNC_NAME(type, delete)
+#define FUNC_VECTOR_DELETE(type)        void       VECTOR_DELETE(type)     (VECTOR(type)* self)
+#define FUNC_VECTOR_DELETE_IMPL(type)                                                \
+FUNC_VECTOR_DELETE(type) {                                                           \
+    free(self->data);                                                                \
+    free(self);                                                                      \
+}
+
 #define VECTOR_AT(type)              VECTOR_FUNC_NAME(type, at)
 #define FUNC_VECTOR_AT(type)         type          VECTOR_AT(type)         (VECTOR(type)* self, int at)
 #define FUNC_VECTOR_AT_IMPL(type)                                                    \

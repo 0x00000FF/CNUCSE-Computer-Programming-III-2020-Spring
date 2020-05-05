@@ -2,7 +2,8 @@
 
 #include <stdlib.h>
 #include <setjmp.h>
-#include <app/vector_student.h>
+
+#include <model/lecture_class.h>
 
 #define  MAX_STUDENTS   100
 
@@ -10,7 +11,7 @@ typedef struct {
 	int              argc, result;
 	char**           argv;
 
-	VECTOR(student*)* students;
+	lecture_class*   students;
 } app_controller;
 
 

@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdlib.h> // malloc
 #include <string.h> // strcpy
 
@@ -11,7 +13,7 @@ student* student_create(student_id id, int score)
 		return NULL;
 	}
 
-	strcpy_s(new_student->id, sizeof(id), id);
+	strcpy(new_student->id, id);
 	new_student->score = score;
 
 	return new_student;
@@ -36,10 +38,10 @@ int student_get_score(student* self)
 
 bool student_is_id_valid(student_id id)
 {
-	return strlen(id) >= STUDENT_ID_LENGTH;
+	return strlen(id) <= STUDENT_ID_LENGTH;
 }
 
 bool student_is_score_valid(int score)
 {
-	return score >= 0 || score <= 100;
+	return score >= 0 && score <= 100;
 }

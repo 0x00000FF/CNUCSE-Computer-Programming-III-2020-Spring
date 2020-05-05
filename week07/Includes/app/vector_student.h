@@ -8,6 +8,7 @@
 VECTOR_DEF(student);
 
 FUNC_VECTOR_NEW(student);
+FUNC_VECTOR_DELETE(student);
 FUNC_VECTOR_AT(student);
 FUNC_VECTOR_FRONT(student);
 FUNC_VECTOR_BACK(student);
