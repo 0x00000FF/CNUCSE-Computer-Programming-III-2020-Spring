@@ -11,11 +11,6 @@ void    appview_out_println(const char* str)
     puts(str);
 }
 
-void    appview_out_end_of_input()
-{
-    appview_out_println("입력을 종료합니다.");
-}
-
 void    appview_out_statistics(lecture_view* view)
 {
     printf("평균 점수는 %.1f 입니다.\n"
