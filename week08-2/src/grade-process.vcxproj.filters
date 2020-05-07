@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Includes">
+      <UniqueIdentifier>{98d45d4d-cbfc-484b-ac05-14b075b866bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application">
+      <UniqueIdentifier>{36fcd229-3533-48b3-9e0f-68dd797c4754}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Includes\mvc">
+      <UniqueIdentifier>{5767bc98-df70-4f40-8bed-2bb01ce6892b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Includes\model">
+      <UniqueIdentifier>{ea631eb0-2466-4220-8d93-b68e16c70807}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\model">
+      <UniqueIdentifier>{d8a0740b-b67d-439c-96be-0181f0d2e7d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Includes\app">
+      <UniqueIdentifier>{fe1f031b-2dce-4dcb-8ce7-acec702c3f00}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Sources\main.c" />
+    <ClCompile Include="Sources\application\app_controller.c">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\application\app_controller_lib.c">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\application\model\student.c">
+      <Filter>Application\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\application\model\vector_student.c">
+      <Filter>Application\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\application\appview.c">
+      <Filter>Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\application\model\lecture_class.c">
+      <Filter>Application\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\application\model\lecture_view.c">
+      <Filter>Application\model</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Includes\mvc\app_controller.h">
+      <Filter>Includes\mvc</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\model\student.h">
+      <Filter>Includes\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\mvc\vector.h">
+      <Filter>Includes\mvc</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\mvc\appview.h">
+      <Filter>Includes\mvc</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\app\vector_student.h">
+      <Filter>Includes\app</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\model\lecture_class.h">
+      <Filter>Includes\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\model\lecture_view.h">
+      <Filter>Includes\model</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
