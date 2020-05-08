@@ -1,6 +1,8 @@
 Debug
 Release
 .vs
+.vscode
+.idea
 submit
 
 *.aux
@@ -8,3 +10,5 @@ submit
 *.synctex.*
 *.toc
 *.pdf
+
+*.o
