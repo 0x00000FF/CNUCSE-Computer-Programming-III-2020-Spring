@@ -3,15 +3,19 @@
 #include <stdlib.h>
 #include <setjmp.h>
 
-#include <model/lecture_class.h>
+#include <app/unsorted_list.h>
+#include <app/parameter_set.h>
 
-#define  MAX_STUDENTS   100
+#define  MIN_TEST_SIZE      1000
+#define  NUMBER_OF_TESTS    5
+#define  INTERVAL_SIZE      1000
 
 typedef struct {
 	int              argc, result;
 	char**           argv;
 
-	lecture_class*   students;
+	unsorted_list*     test_data;
+	parameter_set*     parameter_set;
 } app_controller;
 
 

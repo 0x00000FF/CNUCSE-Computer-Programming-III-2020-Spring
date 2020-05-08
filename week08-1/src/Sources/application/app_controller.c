@@ -1,7 +1,20 @@
 ﻿#include <mvc/appview.h>
 #include <mvc/app_controller.h>    // app_controller
 
-#include <model/student.h>
+#include <app/perf_timer.h>
+#include <app/message.h>
+
+#include <stdio.h>   // sprintf
+
+void            app_controller_init_performance_measurement(app_controller* self)
+{
+	parameter_set_set_min_test_size(self->parameter_set, MIN_TEST_SIZE);
+	parameter_set_set_interval_size(self->parameter_set, INTERVAL_SIZE);
+	parameter_set_set_number_of_tests_size(self->parameter_set, NUMBER_OF_TESTS);
+
+	int max_test_size = MIN_TEST_SIZE * INTERVAL_SIZE * (NUMBER_OF_TESTS - 1);
+	self->test_data = VECTOR_NEW(element)(max_test_size);
+}
 
 // app_controller 생성자
 app_controller* app_controller_create(int argc, char** argv)
@@ -12,88 +25,93 @@ app_controller* app_controller_create(int argc, char** argv)
 	controller->argv   = argv;
 	controller->result = 0;
 
-	controller->students = VECTOR_NEW(student)(MAX_STUDENTS);
+	controller->parameter_set = parameter_set_new();
+	app_controller_init_performance_measurement(controller);
 
 	return controller;
 }
 
-
-// static method because self is not necessary
-bool            app_controller_input_is_valid(
-	student_id id,
-	int score)
+double  	    app_controller_time_for_unsorted_array_list_remove_max(app_controller* self, unsorted_list* list_for_test, int test_size)
 {
-	bool valid_result = true;
+	if (self == NULL) return -1; // error: unused parameter ‘self’ [-Werror=unused-parameter]
 
-	// if id is less than 10^8
-	if ( !student_is_id_valid(id) ) {
-		appview_err_too_long_id(id, STUDENT_ID_LENGTH);
-		valid_result = false;
+	perf_timer* perf_timer = perf_timer_new();
+
+	double duration = 0;
+	for (int i = 0; i < test_size; ++i) {
+		perf_timer_start(perf_timer);
+
+		unsorted_list_remove_max(list_for_test);
+
+		perf_timer_stop(perf_timer);
+		duration += perf_timer_duration(perf_timer);
 	}
 
-	if (!student_is_score_valid(score)) {
-		appview_err_invalid_score();
-		valid_result = false;
-	}
+	perf_timer_delete(perf_timer);
 
-	return valid_result;
+	return duration;
 }
 
-void            app_controller_show_statistics(app_controller* self)
+double          app_controller_time_for_unsorted_array_list_add(app_controller* self, unsorted_list* list_for_test, int test_size)
 {
-	lecture_view* view = lecture_view_create(self->students);
-	appview_out_statistics(view);
-	appview_out_sorted_student_list(view);
-	lecture_view_delete(view);
-}
+	perf_timer*  perf_timer = perf_timer_new();
+	
+	double duration = 0;
+	for (int i = 0; i < test_size; ++i) {
+		perf_timer_start(perf_timer);
 
-bool            app_controller_get_input(app_controller* self)
-{
-	student*   student;
-	student_id id;
-	int        score = 0;
-	bool       store_result = true;
+		VECTOR_PUSH_BACK(element)(list_for_test, VECTOR_AT(element)(self->test_data, i));
 
-	while (store_result && appview_in_get_continue()) {
-		appview_in_get_student(id, &score);
-
-		if (app_controller_input_is_valid(id, score)) {
-			student = student_create(id, score);
-			VECTOR_PUSH_BACK(student)(self->students, *student);
-
-			free(student); // prevent memory leakage
-		}
+		perf_timer_stop(perf_timer);
+		duration += perf_timer_duration(perf_timer);
 	}
 
-	appview_out_println("입력을 종료합니다.");
+	perf_timer_delete(perf_timer);
 
-	return store_result;
+	return duration;
+}
+
+void            app_controller_generate_test_data_by_random_numbers(app_controller* self)
+{
+    int max_test_size = MIN_TEST_SIZE + INTERVAL_SIZE * (NUMBER_OF_TESTS - 1);
+	srand((unsigned) time(NULL));
+	
+	for (int i = 0; i < max_test_size; ++i) {
+		VECTOR_PUSH_BACK(element)(self->test_data, rand());
+	}
+}
+
+void            app_controller_show_results(int test_size, double time_for_add, double time_for_remove_max)
+{
+	char buffer[64];
+
+	sprintf(buffer, "크기: %d,  삽입: %lf,  최대값삭제: %lf", test_size, time_for_add, time_for_remove_max);
+	appview_out(buffer);
 }
 
 // application routine 시작
 void            app_controller_run   (app_controller* self)
 {
-	bool input_success = false;
+	appview_out(MSG_start_performance_measuring);
 
-	appview_out_println("<<< 성적 처리를 시작합니다 >>>\n");
-	input_success = app_controller_get_input(self);
+	app_controller_generate_test_data_by_random_numbers(self);
+	appview_out(MSG_title_for_unsorted_array_list);
 
-	if (input_success) {
-		if (VECTOR_EMPTY(student)(self->students)) {
-			appview_out_println("[오류] 학생 정보가 전혀 입력되지 않았습니다.");
-		}
-		else {
-			app_controller_show_statistics(self);
-		}
-
-		self->result = 0;
-	}
-	else {
-		appview_out_println("[오류] 성적이 정상적으로 저장되지 않았습니다.");
-		self->result = -1;
-	}
+	int            test_size = MIN_TEST_SIZE;
+	unsorted_list* list_for_test = VECTOR_NEW(element)(test_size);
 	
-	appview_out_println("<<< 성적 처리를 종료합니다 >>>\n");
+	for (; test_size <= parameter_set_max_test_size(self->parameter_set); test_size += INTERVAL_SIZE) {
+		VECTOR_CLEAR(element)(list_for_test);
+	
+		double         time_for_add = app_controller_time_for_unsorted_array_list_add(self, list_for_test, test_size);
+		double         time_for_remove_max = app_controller_time_for_unsorted_array_list_remove_max(self, list_for_test, test_size);
+
+		app_controller_show_results(test_size, time_for_add, time_for_remove_max);
+	}
+
+	VECTOR_DELETE(element)(list_for_test);
+
+	appview_out(MSG_end_performance_measuring);
 }
 
 // app_controller 소멸자
@@ -101,6 +119,7 @@ void            app_controller_delete(app_controller* self)
 {
 	if (self == NULL) return;
 
-	VECTOR_DELETE(student)(self->students);
+	// vector 해제
+	VECTOR_DELETE(element)(self->test_data);
 	free(self);
 }

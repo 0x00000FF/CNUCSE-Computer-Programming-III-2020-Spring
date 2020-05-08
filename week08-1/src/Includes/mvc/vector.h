@@ -13,9 +13,9 @@
 #define FUNC_VECTOR_NEW(type)        VECTOR(type)* VECTOR_NEW(type)        (int capacity)
 #define FUNC_VECTOR_NEW_IMPL(type)                                                    \
 FUNC_VECTOR_NEW(type) {                                                               \
-    VECTOR(student)* new_vector = (VECTOR(student)*) malloc(sizeof(VECTOR(student))); \
+    VECTOR(type)* new_vector = (VECTOR(type)*) malloc(sizeof(VECTOR(type))); \
                                                                                       \
-    new_vector->data = (student*)malloc(capacity * sizeof(student));                  \
+    new_vector->data = (type*)malloc(capacity * sizeof(type));                  \
     new_vector->capacity = capacity;                                                  \
     new_vector->size = 0;                                                             \
                                                                                       \
@@ -89,7 +89,7 @@ FUNC_VECTOR_MAX_SIZE(type) {                                                    
 #define FUNC_VECTOR_CLEAR_IMPL(type)                                                 \
 FUNC_VECTOR_CLEAR(type) {                                                            \
     free(self->data);                                                                \
-    self->data = (student*)malloc(self->capacity * sizeof(student));                 \
+    self->data = (type*)malloc(self->capacity * sizeof(type));                 \
 }
 
 #define VECTOR_INSERT(type)          VECTOR_FUNC_NAME(type, insert)
@@ -97,10 +97,10 @@ FUNC_VECTOR_CLEAR(type) {                                                       
 #define FUNC_VECTOR_INSERT_IMPL(type)                                                \
 FUNC_VECTOR_INSERT(type) {                                                           \
     if (self->size == self->capacity) {                                              \
-        student* temp = self->data;                                                  \
+        type* temp = self->data;                                                  \
                                                                                      \
         self->capacity *= 2;                                                         \
-        self->data = (student*)malloc(self->capacity * sizeof(student));             \
+        self->data = (type*)malloc(self->capacity * sizeof(type));             \
                                                                                      \
         if (self->data != NULL) {                                                    \
             memcpy(self->data, temp, self->size);                                    \
@@ -138,14 +138,14 @@ FUNC_VECTOR_ERASE(type) {                                                       
 #define FUNC_VECTOR_PUSH_BACK(type)  void          VECTOR_PUSH_BACK(type)  (VECTOR(type)* self, type elem)
 #define FUNC_VECTOR_PUSH_BACK_IMPL(type)                                             \
 FUNC_VECTOR_PUSH_BACK(type) {                                                        \
-    VECTOR_INSERT(student)(self, elem, self->size);                                  \
+    VECTOR_INSERT(type)(self, elem, self->size);                                     \
 }
 
 #define VECTOR_POP_BACK(type)        VECTOR_FUNC_NAME(type, pop_back)
 #define FUNC_VECTOR_POP_BACK(type)   void          VECTOR_POP_BACK(type)   (VECTOR(type)* self)
 #define FUNC_VECTOR_POP_BACK_IMPL(type)                                              \
 FUNC_VECTOR_POP_BACK(type) {                                                         \
-    VECTOR_ERASE(student)(self, self->size - 1);                                     \
+    VECTOR_ERASE(type)(self, self->size - 1);                                        \
 }
 
 #define VECTOR_SWAP(type)            VECTOR_FUNC_NAME(type, swap)
@@ -158,7 +158,7 @@ FUNC_VECTOR_SWAP(type) {                                                        
         return;                                                                      \
     }                                                                                \
                                                                                      \
-    student temp = self->data[pos1];                                                 \
+    type temp = self->data[pos1];                                                    \
     self->data[pos1] = self->data[pos2];                                             \
     self->data[pos2] = temp;                                                         \
 }
