@@ -113,7 +113,12 @@ void            app_controller_show_all_from_top(app_controller* self)
 
 void            app_controller_show_top_element(app_controller* self)
 {
-	element c = stack_empty(self->stack) ? ' ' : stack_peek(self->stack);
+	if (stack_empty(self->stack)) {
+		appview_out_no_top_element();
+		return;
+	}
+
+	element c = stack_peek(self->stack);
 	appview_out_top_element(c);
 }
 
