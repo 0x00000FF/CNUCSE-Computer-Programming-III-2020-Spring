@@ -31,7 +31,7 @@ app_controller* app_controller_create(int argc, char** argv)
 	return controller;
 }
 
-double  	    app_controller_time_for_unsorted_array_list_remove_max(app_controller* self, unsorted_list* list_for_test, int test_size)
+double  	    app_controller_time_for_unsorted_array_list_remove_max(app_controller* self, unsorted_array_list* list_for_test, int test_size)
 {
 	if (self == NULL) return -1; // error: unused parameter ‘self’ [-Werror=unused-parameter]
 
@@ -41,7 +41,7 @@ double  	    app_controller_time_for_unsorted_array_list_remove_max(app_controll
 	for (int i = 0; i < test_size; ++i) {
 		perf_timer_start(perf_timer);
 
-		unsorted_list_remove_max(list_for_test);
+		unsorted_array_list_remove_max(list_for_test);
 
 		perf_timer_stop(perf_timer);
 		duration += perf_timer_duration(perf_timer);
@@ -52,7 +52,7 @@ double  	    app_controller_time_for_unsorted_array_list_remove_max(app_controll
 	return duration;
 }
 
-double          app_controller_time_for_unsorted_array_list_add(app_controller* self, unsorted_list* list_for_test, int test_size)
+double          app_controller_time_for_unsorted_array_list_add(app_controller* self, unsorted_array_list* list_for_test, int test_size)
 {
 	perf_timer*  perf_timer = perf_timer_new();
 	
@@ -97,19 +97,33 @@ void            app_controller_run   (app_controller* self)
 	app_controller_generate_test_data_by_random_numbers(self);
 	appview_out(MSG_title_for_unsorted_array_list);
 
-	int            test_size = MIN_TEST_SIZE;
-	unsorted_list* list_for_test = VECTOR_NEW(element)(test_size);
+	int                  test_size     = parameter_set_get_min_test_size(self->parameter_set);
+	unsorted_array_list* list_for_test; // not to initialize to initialize in loop
 	
-	for (; test_size <= parameter_set_max_test_size(self->parameter_set); test_size += INTERVAL_SIZE) {
-		VECTOR_CLEAR(element)(list_for_test);
+	for (; test_size <= parameter_set_max_test_size(self->parameter_set); 
+		   test_size += parameter_set_get_interval_size(self->parameter_set)) {
+		list_for_test = VECTOR_NEW(element)(test_size);
 	
-		double         time_for_add = app_controller_time_for_unsorted_array_list_add(self, list_for_test, test_size);
-		double         time_for_remove_max = app_controller_time_for_unsorted_array_list_remove_max(self, list_for_test, test_size);
+		double  time_for_add = app_controller_time_for_unsorted_array_list_add(self, list_for_test, test_size);
+		double  time_for_remove_max = app_controller_time_for_unsorted_array_list_remove_max(self, list_for_test, test_size);
 
 		app_controller_show_results(test_size, time_for_add, time_for_remove_max);
+		
+		VECTOR_DELETE(element)(list_for_test);
 	}
 
-	VECTOR_DELETE(element)(list_for_test);
+	for (; test_size <= parameter_set_max_test_size(self->parameter_set);
+		   test_size += parameter_set_get_interval_size(self->parameter_set)) {
+		list_for_test = VECTOR_NEW(element)(test_size);
+
+		double  time_for_add = 
+		double  time_for_min = 
+		double  time_for_remove_max = 
+
+		app_controller_show_results(test_size, time_for_add, time_for_remove_max);
+
+		VECTOR_DELETE(element)(list_for_test);
+	}
 
 	appview_out(MSG_end_performance_measuring);
 }

@@ -101,8 +101,10 @@ void            app_controller_run   (app_controller* self)
 	unsorted_list* list_for_test = VECTOR_NEW(element)(test_size);
 	
 	for (; test_size <= parameter_set_max_test_size(self->parameter_set); test_size += INTERVAL_SIZE) {
+		// clear vector<element> for the next testing
 		VECTOR_CLEAR(element)(list_for_test);
 	
+		// i think add time should be vary because of the mechanism of vector::insert...
 		double         time_for_add = app_controller_time_for_unsorted_array_list_add(self, list_for_test, test_size);
 		double         time_for_remove_max = app_controller_time_for_unsorted_array_list_remove_max(self, list_for_test, test_size);
 

@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-c -std=c11 -pedantic -g -W -Wall -Wpedantic -Werror -I./Includes
-OBJ_FILES=app_controller.o app_controller_lib.o appview.o main.o vector_int.o perf_timer.o parameter_set.o unsorted_list.o
+OBJ_FILES=app_controller.o app_controller_lib.o appview.o main.o vector_int.o perf_timer.o parameter_set.o unsorted_array_list.o sorted_array_list.o
 TARGET=list_performance
 
 all: $(TARGET)
@@ -33,6 +33,9 @@ perf_timer.o: Sources/application/model/perf_timer.c
 parameter_set.o: Sources/application/model/parameter_set.c
 	$(CC) $(CFLAGS) -o $@ $^
 
-unsorted_list.o: Sources/application/model/unsorted_list.c
+unsorted_array_list.o: Sources/application/model/unsorted_array_list.c
+	$(CC) $(CFLAGS) -o $@ $^
+
+sorted_array_list.o: Sources/application/model/sorted_array_list.c
 	$(CC) $(CFLAGS) -o $@ $^
 	
