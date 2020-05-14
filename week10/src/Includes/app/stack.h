@@ -1,7 +1,7 @@
 #pragma once
 
 #include <stdbool.h>
-#include <app/vector_char.h>
+#include <app/vector_int.h>
 
 #define  DEFAULT_STACK_CAPACITY  100
 
@@ -21,3 +21,5 @@ int           stack_size(stack self);
 bool          stack_full(stack self);
 bool          stack_empty(stack self);
 
+// added from 10th lect.
+void          stack_reset(stack self);

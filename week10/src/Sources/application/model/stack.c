@@ -18,7 +18,7 @@ bool       stack_push(stack self, element c)
     return true;
 }
 
-char      stack_pop(stack self)
+int       stack_pop(stack self)
 {
     if (stack_empty(self)) return false;
 
@@ -53,4 +53,9 @@ bool       stack_full(stack self)
 bool       stack_empty(stack self)
 {
     return VECTOR_SIZE(element)(self) == 0;
+}
+
+void       stack_reset(stack self)
+{
+    VECTOR_CLEAR(element)(self);
 }
