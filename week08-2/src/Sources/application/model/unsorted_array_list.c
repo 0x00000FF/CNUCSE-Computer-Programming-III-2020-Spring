@@ -22,9 +22,25 @@ bool    unsorted_array_list_add(unsorted_array_list* self, element elem)
     return true;
 }
 
-element unsorted_array_list_get_min(unsorted_array_list* self)
+int unsorted_array_list_min_position_recursively(unsorted_array_list* self, int left, int right)
 {
-    
+    if (left == right) {
+        return left;
+    } else {
+        int mid = (left + right) / 2;
+
+        int min_position_of_left  = unsorted_array_list_min_position_recursively(self, left, mid);
+        int min_position_of_right = unsorted_array_list_min_position_recursively(self, mid + 1, right);
+
+        return VECTOR_AT(element)(self, min_position_of_left) < VECTOR_AT(element)(self, min_position_of_right)
+                ? min_position_of_left : min_position_of_right;
+    }
+}
+
+element unsorted_array_list_min(unsorted_array_list* self)
+{
+    int min_position = unsorted_array_list_min_position_recursively(self, 0, self->size - 1); 
+    return VECTOR_AT(element)(self, min_position);
 }
 
 int     unsorted_array_list_max_position_recursively(unsorted_array_list* self, int left, int right)
