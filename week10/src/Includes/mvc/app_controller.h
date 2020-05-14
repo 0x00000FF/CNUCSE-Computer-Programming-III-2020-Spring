@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <setjmp.h>
 
-#include <app/stack.h>
+#include <app/postfix.h>
 
 #define  KEY_ESC          0x1B
 #define  KEY_DASH         0x2D
@@ -17,11 +17,10 @@
 #define  TO_DIGIT(x)      (x - '0')
 
 typedef struct {
-	int              argc, result;
-	char**           argv;
+	int       argc, result;
+	char**    argv;
 
-	stack            stack;
-	int              c_input, c_ignored, c_push;
+	postfix*  postfix;
 } app_controller;
 
 
