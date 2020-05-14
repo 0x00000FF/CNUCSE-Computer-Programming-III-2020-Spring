@@ -7,7 +7,7 @@
 
 typedef VECTOR(element)* stack;
 
-stack         stack_new();
+stack         stack_new(int stack_max);
 void          stack_delete(stack self);
 
 bool          stack_push(stack self, element c);

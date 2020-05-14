@@ -1,8 +1,8 @@
 #include <app/stack.h>
 
-stack      stack_new()
+stack      stack_new(int stack_max)
 {
-    return VECTOR_NEW(element)(DEFAULT_STACK_CAPACITY);
+    return VECTOR_NEW(element)(stack_max);
 }
 
 void       stack_delete(stack self)
