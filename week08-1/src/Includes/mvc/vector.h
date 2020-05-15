@@ -89,7 +89,7 @@ FUNC_VECTOR_MAX_SIZE(type) {                                                    
 #define FUNC_VECTOR_CLEAR_IMPL(type)                                                 \
 FUNC_VECTOR_CLEAR(type) {                                                            \
     free(self->data);                                                                \
-    self->data = (type*)malloc(self->capacity * sizeof(type));                 \
+    self->data = (type*)calloc(self->capacity, sizeof(type));                        \
 }
 
 #define VECTOR_INSERT(type)          VECTOR_FUNC_NAME(type, insert)
@@ -97,10 +97,10 @@ FUNC_VECTOR_CLEAR(type) {                                                       
 #define FUNC_VECTOR_INSERT_IMPL(type)                                                \
 FUNC_VECTOR_INSERT(type) {                                                           \
     if (self->size == self->capacity) {                                              \
-        type* temp = self->data;                                                  \
+        type* temp = self->data;                                                     \
                                                                                      \
         self->capacity *= 2;                                                         \
-        self->data = (type*)malloc(self->capacity * sizeof(type));             \
+        self->data = (type*)calloc(self->capacity, sizeof(type));                    \
                                                                                      \
         if (self->data != NULL) {                                                    \
             memcpy(self->data, temp, self->size);                                    \
