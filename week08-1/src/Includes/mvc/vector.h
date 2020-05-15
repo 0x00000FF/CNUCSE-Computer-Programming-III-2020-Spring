@@ -114,7 +114,7 @@ FUNC_VECTOR_INSERT(type) {                                                      
         }                                                                            \
     }                                                                                \
                                                                                      \
-    for (int i = self->size; i > pos; ++i) {                                         \
+    for (int i = self->size; i > pos; --i) {                                         \
         self->data[i] = self->data[i - 1];                                           \
     }                                                                                \
                                                                                      \
