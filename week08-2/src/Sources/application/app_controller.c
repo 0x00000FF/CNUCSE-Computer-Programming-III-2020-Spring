@@ -33,6 +33,8 @@ app_controller* app_controller_create(int argc, char** argv)
 
 double  	    app_controller_time_for_unsorted_array_list_remove_max(app_controller* self, unsorted_array_list* list_for_test, int test_size)
 {
+	if (self == NULL) return -1; //error: unused parameter ‘self’ [-Werror=unused-parameter]
+	
 	perf_timer* perf_timer = perf_timer_new();
 
 	double duration = 0;
@@ -52,6 +54,8 @@ double  	    app_controller_time_for_unsorted_array_list_remove_max(app_controll
 
 double          app_controller_time_for_unsorted_array_list_min(app_controller* self, unsorted_array_list* list_for_test, int test_size)
 {
+	if (self == NULL) return -1; //error: unused parameter ‘self’ [-Werror=unused-parameter]
+
 	perf_timer* perf_timer = perf_timer_new();
 
 	double duration = 0;
@@ -65,6 +69,8 @@ double          app_controller_time_for_unsorted_array_list_min(app_controller* 
 	}
 
 	perf_timer_delete(perf_timer);
+
+	return duration;
 }
 
 double          app_controller_time_for_unsorted_array_list_add(app_controller* self, unsorted_array_list* list_for_test, int test_size)
@@ -75,7 +81,7 @@ double          app_controller_time_for_unsorted_array_list_add(app_controller* 
 	for (int i = 0; i < test_size; ++i) {
 		perf_timer_start(perf_timer);
 
-		unsorted_array_list_add(self, VECTOR_AT(element)(self->test_data, i));
+		unsorted_array_list_add(list_for_test, VECTOR_AT(element)(self->test_data, i));
 
 		perf_timer_stop(perf_timer);
 		duration += perf_timer_duration(perf_timer);
@@ -88,6 +94,8 @@ double          app_controller_time_for_unsorted_array_list_add(app_controller* 
 
 double  	    app_controller_time_for_sorted_array_list_remove_max(app_controller* self, sorted_array_list* list_for_test, int test_size)
 {
+	if (self == NULL) return -1; //error: unused parameter ‘self’ [-Werror=unused-parameter]
+
 	perf_timer* perf_timer = perf_timer_new();
 
 	double duration = 0;
@@ -107,6 +115,8 @@ double  	    app_controller_time_for_sorted_array_list_remove_max(app_controller
 
 double          app_controller_time_for_sorted_array_list_min(app_controller* self, sorted_array_list* list_for_test, int test_size)
 {
+	if (self == NULL) return -1; //error: unused parameter ‘self’ [-Werror=unused-parameter]
+
 	perf_timer* perf_timer = perf_timer_new();
 
 	double duration = 0;
@@ -120,6 +130,8 @@ double          app_controller_time_for_sorted_array_list_min(app_controller* se
 	}
 
 	perf_timer_delete(perf_timer);
+
+	return duration;
 }
 
 double          app_controller_time_for_sorted_array_list_add(app_controller* self, sorted_array_list* list_for_test, int test_size)
@@ -130,7 +142,7 @@ double          app_controller_time_for_sorted_array_list_add(app_controller* se
 	for (int i = 0; i < test_size; ++i) {
 		perf_timer_start(perf_timer);
 
-		sorted_array_list_add(self, VECTOR_AT(element)(self->test_data, i));
+		sorted_array_list_add(list_for_test, VECTOR_AT(element)(self->test_data, i));
 
 		perf_timer_stop(perf_timer);
 		duration += perf_timer_duration(perf_timer);
@@ -151,11 +163,12 @@ void            app_controller_generate_test_data_by_random_numbers(app_controll
 	}
 }
 
-void            app_controller_show_results(int test_size, double time_for_add, double time_for_remove_max)
+void            app_controller_show_results(int test_size, double time_for_add, double time_for_min, double time_for_remove_max)
 {
-	char buffer[64];
+	char buffer[256];
 
-	sprintf(buffer, "크기: %d,  삽입: %lf,  최대값삭제: %lf", test_size, time_for_add, time_for_remove_max);
+	sprintf(buffer, "크기: %6d,  삽입: %6ld, 최소값얻기: %7ld, 최대값삭제: %7ld", 
+					test_size, (long) time_for_add, (long) time_for_min, (long) time_for_remove_max);
 	appview_out(buffer);
 }
 
@@ -179,7 +192,7 @@ void            app_controller_run   (app_controller* self)
 		double  time_for_min = app_controller_time_for_unsorted_array_list_min(self, list_for_test, test_size);
 		double  time_for_remove_max = app_controller_time_for_unsorted_array_list_remove_max(self, list_for_test, test_size);
 
-		app_controller_show_results(test_size, time_for_add, time_for_remove_max);
+		app_controller_show_results(test_size, time_for_add, time_for_min, time_for_remove_max);
 		
 		VECTOR_DELETE(element)(list_for_test);
 	}
@@ -196,7 +209,7 @@ void            app_controller_run   (app_controller* self)
 		double  time_for_min = app_controller_time_for_sorted_array_list_min(self, list_for_test, test_size);
 		double  time_for_remove_max = app_controller_time_for_sorted_array_list_remove_max(self, list_for_test, test_size);
 
-		app_controller_show_results(test_size, time_for_add, time_for_remove_max);
+		app_controller_show_results(test_size, time_for_add, time_for_min, time_for_remove_max);
 
 		VECTOR_DELETE(element)(list_for_test);
 	}

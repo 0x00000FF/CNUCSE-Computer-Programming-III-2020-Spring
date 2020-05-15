@@ -60,7 +60,7 @@ element             sorted_array_list_remove_max(sorted_array_list* self)
     element max = VECTOR_BACK(element)(self);
     VECTOR_POP_BACK(element)(self);
 
-    return self;
+    return max;
 }
 
 element             sorted_array_list_min(sorted_array_list* self)
