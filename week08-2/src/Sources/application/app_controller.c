@@ -199,10 +199,11 @@ void            app_controller_run   (app_controller* self)
 
 
 	appview_out(MSG_title_for_sorted_array_list);
-	
+
 	// 순서 리스트 테스트 개시
-	for (; test_size <= parameter_set_max_test_size(self->parameter_set);
-		   test_size += parameter_set_get_interval_size(self->parameter_set)) {
+	for (test_size  = parameter_set_get_min_test_size(self->parameter_set); 
+	     test_size <= parameter_set_max_test_size(self->parameter_set);
+		 test_size += parameter_set_get_interval_size(self->parameter_set)) {
 		list_for_test = VECTOR_NEW(element)(test_size);
 
 		double  time_for_add = app_controller_time_for_sorted_array_list_add(self, list_for_test, test_size);
