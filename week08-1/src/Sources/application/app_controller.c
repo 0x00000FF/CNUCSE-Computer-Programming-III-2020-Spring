@@ -85,7 +85,7 @@ void            app_controller_show_results(int test_size, double time_for_add, 
 {
 	char buffer[64];
 
-	sprintf(buffer, "크기: %d,  삽입: %lf,  최대값삭제: %lf", test_size, time_for_add, time_for_remove_max);
+	sprintf(buffer, "크기: %d,  삽입: %6ld,  최대값삭제: %7ld", test_size, (long)time_for_add, (long)time_for_remove_max);
 	appview_out(buffer);
 }
 
