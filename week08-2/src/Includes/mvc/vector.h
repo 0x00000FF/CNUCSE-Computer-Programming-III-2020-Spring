@@ -13,9 +13,9 @@
 #define FUNC_VECTOR_NEW(type)        VECTOR(type)* VECTOR_NEW(type)        (int capacity)
 #define FUNC_VECTOR_NEW_IMPL(type)                                                    \
 FUNC_VECTOR_NEW(type) {                                                               \
-    VECTOR(type)* new_vector = (VECTOR(type)*) malloc(sizeof(VECTOR(type))); \
+    VECTOR(type)* new_vector = (VECTOR(type)*) malloc(sizeof(VECTOR(type)));          \
                                                                                       \
-    new_vector->data = (type*)malloc(capacity * sizeof(type));                  \
+    new_vector->data = (type*)calloc(capacity, sizeof(type));                         \
     new_vector->capacity = capacity;                                                  \
     new_vector->size = 0;                                                             \
                                                                                       \
