@@ -90,6 +90,7 @@ FUNC_VECTOR_MAX_SIZE(type) {                                                    
 FUNC_VECTOR_CLEAR(type) {                                                            \
     free(self->data);                                                                \
     self->data = (type*)malloc(self->capacity * sizeof(type));                 \
+    self->size = 0;                                                            \
 }
 
 #define VECTOR_INSERT(type)          VECTOR_FUNC_NAME(type, insert)

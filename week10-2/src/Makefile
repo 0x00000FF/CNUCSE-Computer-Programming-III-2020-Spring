@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-c -std=c11 -pedantic -g -W -Wall -Wpedantic -Werror -I./Includes
-OBJ_FILES=getchar_direct.o app_controller.o app_controller_lib.o appview.o main.o vector_int.o stack.o postfix.o
+OBJ_FILES=getchar_direct.o app_controller.o app_controller_lib.o appview.o main.o vector_int.o stack.o postfix.o message.o
 TARGET=postfix
 
 all: $(TARGET)
@@ -35,3 +35,6 @@ stack.o: Sources/application/model/stack.c
 
 postfix.o: Sources/application/model/postfix.c
 	$(CC) $(CFLAGS) -o $@ $^	
+
+message.o: Sources/application/model/message.c
+	$(CC) $(CFLAGS) -o $@ $^

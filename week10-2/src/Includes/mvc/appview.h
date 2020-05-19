@@ -2,8 +2,13 @@
 
 #include <stdbool.h>
 
+#include <app/postfix.h>
+#include <app/message.h>
+
 char appview_in_char_directly_from_keyboard ();
 bool appview_in_postfix_expression();
+
+void appview_out_postfix_evaluation_error_message(postfix_error error_code, i18n_locale locale);
 
 void appview_out_starting_message();
 void appview_out_ending_message();

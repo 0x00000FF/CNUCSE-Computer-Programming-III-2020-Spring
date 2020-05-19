@@ -20,6 +20,14 @@ char appview_in_char_directly_from_keyboard ()
     return new_char;
 }
 
+void appview_out_postfix_evaluation_error_message(postfix_error error_code, i18n_locale locale) {
+    const char** error_message_db = get_i18n_errormsg_db(locale);
+    const char*  error_message    = error_message_db[error_code - 1];
+
+    if (error_message != NULL)
+        puts(error_message);
+}
+
 void appview_out_starting_message() {
     puts("<Postfix 수식 계산을 시작합니다>\n");
 }
