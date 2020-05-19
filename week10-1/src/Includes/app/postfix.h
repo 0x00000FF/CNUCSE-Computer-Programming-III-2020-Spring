@@ -15,5 +15,5 @@ postfix* postfix_new (int max_token);
 void     postfix_delete(postfix* self);
 
 void     postfix_set_expression(postfix* self, char* expression);
-void     postfix_evaluated_value(postfix* self);
+int      postfix_evaluated_value(postfix* self);
 bool     postfix_evaluate(postfix* self);

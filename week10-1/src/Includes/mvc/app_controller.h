@@ -16,10 +16,13 @@
 #define  IS_DIGIT(x)      (x >= '0' && x <= '9')
 #define  TO_DIGIT(x)      (x - '0')
 
+#define  MAX_NUMBER_OF_TOKENS  200
+
 typedef struct {
 	int       argc, result;
 	char**    argv;
 
+    char      expression[MAX_NUMBER_OF_TOKENS];
 	postfix*  postfix;
 } app_controller;
 
