@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-c -std=c11 -pedantic -g -W -Wall -Wpedantic -Werror -I./Includes
-OBJ_FILES=app_controller.o app_controller_lib.o appview.o main.o vector_int.o perf_timer.o parameter_set.o unsorted_array_list.o sorted_array_list.o
+OBJ_FILES=app_controller.o app_controller_lib.o appview.o main.o vector_int.o perf_timer.o parameter_set.o unsorted_array_list.o linked_list_node.o unsorted_linked_list.o sorted_linked_list.o
 TARGET=list_performance
 
 all: $(TARGET)
@@ -36,6 +36,11 @@ parameter_set.o: Sources/application/model/parameter_set.c
 unsorted_array_list.o: Sources/application/model/unsorted_array_list.c
 	$(CC) $(CFLAGS) -o $@ $^
 
-sorted_array_list.o: Sources/application/model/sorted_array_list.c
+linked_list_node.o: Sources/application/datatypes/linked_list_node.c
 	$(CC) $(CFLAGS) -o $@ $^
-	
+
+unsorted_linked_list.o: Sources/application/datatypes/unsorted_linked_list.c
+	$(CC) $(CFLAGS) -o $@ $^
+
+sorted_linked_list.o: Sources/application/datatypes/sorted_linked_list.c
+	$(CC) $(CFLAGS) -o $@ $^

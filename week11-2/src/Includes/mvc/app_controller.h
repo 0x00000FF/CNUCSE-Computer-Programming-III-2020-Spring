@@ -4,7 +4,7 @@
 #include <setjmp.h>
 
 #include <app/unsorted_array_list.h>
-#include <app/sorted_array_list.h>
+
 #include <app/parameter_set.h>
 
 #define  MIN_TEST_SIZE      1000
@@ -12,8 +12,8 @@
 #define  INTERVAL_SIZE      1000
 
 typedef struct {
-	int              argc, result;
-	char**           argv;
+	int                      argc, result;
+	char**                   argv;
 
 	unsorted_array_list*     test_data;
 	parameter_set*           parameter_set;
