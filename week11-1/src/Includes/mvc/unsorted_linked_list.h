@@ -11,8 +11,8 @@ typedef struct {
 unsorted_linked_list* unsorted_linked_list_new();
 void                  unsorted_linked_list_delete(unsorted_linked_list* self);
 
-bool     unsorted_linked_list_is_empty   (unsorted_linked_list* self);
-bool     unsorted_linked_list_is_full    (unsorted_linked_list* self);
-bool     unsorted_linked_list_add        (unsorted_linked_list* self, element data);
-element  unsorted_linked_list_min        (unsorted_linked_list* self);
-element  unsorted_linked_list_remove_max (unsorted_linked_list* self);
+bool                  unsorted_linked_list_is_empty   (unsorted_linked_list* self);
+bool                  unsorted_linked_list_is_full    (unsorted_linked_list* self);
+bool                  unsorted_linked_list_add        (unsorted_linked_list* self, element data);
+element               unsorted_linked_list_min        (unsorted_linked_list* self);
+element               unsorted_linked_list_remove_max (unsorted_linked_list* self);
