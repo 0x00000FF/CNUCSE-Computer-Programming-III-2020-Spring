@@ -1,5 +1,8 @@
-﻿#include <mvc/appview.h>
-#include <mvc/app_controller.h>    // app_controller
+﻿#include <mvc/app_controller.h>    // app_controller
+#include <mvc/appview.h>
+
+#include <mvc/linked_list.h>
+#include <mvc/unsorted_linked_list.h>
 
 #include <app/perf_timer.h>
 #include <app/message.h>
@@ -31,7 +34,7 @@ app_controller* app_controller_create(int argc, char** argv)
 	return controller;
 }
 
-double  	    app_controller_time_for_unsorted_array_list_remove_max(app_controller* self, unsorted_list* list_for_test, int test_size)
+double  	    app_controller_time_for_unsorted_linked_list_remove_max(app_controller* self, unsorted_linked_list* list_for_test, int test_size)
 {
 	if (self == NULL) return -1; // error: unused parameter ‘self’ [-Werror=unused-parameter]
 
@@ -41,7 +44,7 @@ double  	    app_controller_time_for_unsorted_array_list_remove_max(app_controll
 	for (int i = 0; i < test_size; ++i) {
 		perf_timer_start(perf_timer);
 
-		unsorted_list_remove_max(list_for_test);
+		unsorted_linked_list_remove_max(list_for_test);
 
 		perf_timer_stop(perf_timer);
 		duration += perf_timer_duration(perf_timer);
@@ -52,7 +55,29 @@ double  	    app_controller_time_for_unsorted_array_list_remove_max(app_controll
 	return duration;
 }
 
-double          app_controller_time_for_unsorted_array_list_add(app_controller* self, unsorted_list* list_for_test, int test_size)
+
+double          app_controller_time_for_unsorted_linked_list_min(app_controller* self, unsorted_linked_list* list_for_test, int test_size)
+{
+	if (self == NULL) return -1; //error: unused parameter ‘self’ [-Werror=unused-parameter]
+
+	perf_timer* perf_timer = perf_timer_new();
+
+	double duration = 0;
+	for (int i = 0; i < test_size; ++i) {
+		perf_timer_start(perf_timer);
+
+		unsorted_linked_list_min(list_for_test);
+
+		perf_timer_stop(perf_timer);
+		duration += perf_timer_duration(perf_timer);
+	}
+
+	perf_timer_delete(perf_timer);
+
+	return duration;
+}
+
+double          app_controller_time_for_unsorted_linked_list_add(app_controller* self, unsorted_linked_list* list_for_test, int test_size)
 {
 	perf_timer*  perf_timer = perf_timer_new();
 	
@@ -60,7 +85,7 @@ double          app_controller_time_for_unsorted_array_list_add(app_controller* 
 	for (int i = 0; i < test_size; ++i) {
 		perf_timer_start(perf_timer);
 
-		VECTOR_PUSH_BACK(element)(list_for_test, VECTOR_AT(element)(self->test_data, i));
+		unsorted_linked_list_add(list_for_test, VECTOR_AT(element)(self->test_data, i));
 
 		perf_timer_stop(perf_timer);
 		duration += perf_timer_duration(perf_timer);
@@ -81,11 +106,12 @@ void            app_controller_generate_test_data_by_random_numbers(app_controll
 	}
 }
 
-void            app_controller_show_results(int test_size, double time_for_add, double time_for_remove_max)
+void            app_controller_show_results(int test_size, double time_for_add, double time_for_min, double time_for_remove_max)
 {
-	char buffer[64];
+	char buffer[256];
 
-	sprintf(buffer, "크기: %d,  삽입: %6ld,  최대값삭제: %7ld", test_size, (long)time_for_add, (long)time_for_remove_max);
+	sprintf(buffer, "크기: %6d,  삽입: %6ld, 최소값얻기: %7ld, 최대값삭제: %7ld", 
+					test_size, (long) time_for_add, (long) time_for_min, (long) time_for_remove_max);
 	appview_out(buffer);
 }
 
@@ -95,23 +121,24 @@ void            app_controller_run   (app_controller* self)
 	appview_out(MSG_start_performance_measuring);
 
 	app_controller_generate_test_data_by_random_numbers(self);
-	appview_out(MSG_title_for_unsorted_array_list);
+	appview_out(MSG_title_for_unsorted_linked_list);
 
-	int            test_size = MIN_TEST_SIZE;
-	unsorted_list* list_for_test = VECTOR_NEW(element)(test_size);
+	int                   test_size = MIN_TEST_SIZE;
+	unsorted_linked_list* list      = unsorted_linked_list_new(); 
 	
 	for (; test_size <= parameter_set_max_test_size(self->parameter_set); test_size += INTERVAL_SIZE) {
 		// clear vector<element> for the next testing
-		VECTOR_CLEAR(element)(list_for_test);
+		//VECTOR_CLEAR(element)(list_for_test);
 	
 		// i think add time should be vary because of the mechanism of vector::insert...
-		double         time_for_add = app_controller_time_for_unsorted_array_list_add(self, list_for_test, test_size);
-		double         time_for_remove_max = app_controller_time_for_unsorted_array_list_remove_max(self, list_for_test, test_size);
+		double  time_for_add = app_controller_time_for_unsorted_linked_list_add(self, list, test_size);
+		double  time_for_min = app_controller_time_for_unsorted_linked_list_min(self, list, test_size);
+		double  time_for_remove_max = app_controller_time_for_unsorted_linked_list_remove_max(self, list, test_size);
 
-		app_controller_show_results(test_size, time_for_add, time_for_remove_max);
+		app_controller_show_results(test_size, time_for_add, time_for_min, time_for_remove_max);
 	}
 
-	VECTOR_DELETE(element)(list_for_test);
+	unsorted_linked_list_delete(list);
 
 	appview_out(MSG_end_performance_measuring);
 }
