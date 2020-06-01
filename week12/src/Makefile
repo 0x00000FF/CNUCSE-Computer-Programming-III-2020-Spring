@@ -33,6 +33,12 @@ vector_int.o: Sources/application/model/vector_int.c
 stack.o: Sources/application/model/stack.c
 	$(CC) $(CFLAGS) -o $@ $^
 
+linked_list_node.o: Sources/application/datatypes/linked_list_node.c
+	$(CC) $(CFLAGS) -o $@ $^
+
+unsorted_linked_list.o: Sources/application/datatypes/unsorted_linked_list.c
+	$(CC) $(CFLAGS) -o $@ $^
+
 postfix.o: Sources/application/model/postfix.c
 	$(CC) $(CFLAGS) -o $@ $^	
 
