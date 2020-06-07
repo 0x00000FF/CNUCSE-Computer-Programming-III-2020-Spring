@@ -29,6 +29,23 @@ void                  unsorted_linked_list_delete(unsorted_linked_list* self) {
     free(self);
 }
 
+linked_list_node*  unsorted_linked_list_head(unsorted_linked_list* self) {
+    return self->head;
+}
+
+linked_list_node*  unsorted_linked_list_at(unsorted_linked_list* self, int pos) {
+    if (pos >= self->size) return NULL;
+
+    int r_pos              = self->size - pos;
+    linked_list_node* node = self->head;
+
+    for (int i = 0; i < r_pos || node != NULL; ++i) {
+        node = linked_list_node_next(node);
+    }
+
+    return node;
+}
+
 bool     unsorted_linked_list_is_empty   (unsorted_linked_list* self) {
     return (self->size == 0);
 }
@@ -72,6 +89,16 @@ element  unsorted_linked_list_min        (unsorted_linked_list* self) {
 
         return min;
     }
+}
+
+element  unsorted_linked_list_pop_first  (unsorted_linked_list* self) {
+    linked_list_node* head = self->head;
+    int               val  = linked_list_node_element(head);
+    
+    self->head = linked_list_node_next(self->head);
+    free(head);
+
+    return val;
 }
 
 element  unsorted_linked_list_remove_max (unsorted_linked_list* self) {

@@ -15,10 +15,10 @@ typedef enum {
 } postfix_error;
 
 typedef struct {
-    int    max_number_of_tokens;
-    char*  expression;
-    int    evaluated_value;
-    stack  operand_stack;
+    int     max_number_of_tokens;
+    char*   expression;
+    int     evaluated_value;
+    stack*  operand_stack;
 } postfix;
 
 postfix*          postfix_new (int max_token);
